@@ -45,9 +45,9 @@ if __name__ == '__main__':
             inval = 'oops'
             while inval == 'oops':
                 try:
-                    inval = input("Please enter a number or None: ").lower()
-                    if inval == 'none':
-                        inval = None
+                    inval = input("Please enter a number or INF: ").lower()
+                    if inval == 'inf':
+                        inval = INF
                     else:
                         inval = int(inval)
                     mat[a][b] = inval
