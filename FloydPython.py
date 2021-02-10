@@ -3,12 +3,17 @@ This program is so that I don't have to manually do
 a floyd warshal demonstration on every bloody step
 of the mat.
 """
-INF = 1000000
+INF = None
 
 def printmat(mat: list):
     for sublist in mat:
-        print(sublist)
-    print("\n\n")
+        for element in sublist:
+            if element is INF:
+                print(f"{'INF': ^4}", end='')
+            else:
+                print(f"{element: ^4}", end='')
+        print("")
+    print("\n")
 
 
 def floyd_warsh(mat: list, n: int):
@@ -18,11 +23,14 @@ def floyd_warsh(mat: list, n: int):
     for a in range(n):
         for b in range(n):
             for c in range(n):
-                if (mat[b][a] == INF) or (mat[a][c] is INF):
+                if (mat[b][a] is INF) or (mat[a][c] is INF):
                     pass
+                elif mat[b][c] is INF:
+                    mat[b][c] = mat[b][a] + mat[a][c]
                 elif mat[b][c] > mat[b][a] + mat[a][c]:
                     mat[b][c] = mat[b][a] + mat[a][c]
         printmat(mat)
+
 
 if __name__ == '__main__':
     val = None
